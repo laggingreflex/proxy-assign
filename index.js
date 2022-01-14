@@ -1,7 +1,7 @@
 module.exports = (target, ...sources) => {
 
   const lookupArray = Array.from(sources).reverse().concat([target]);
-  const findSourceOf = key => lookupArray.find(_ => _[key] !== undefined);
+  const findSourceOf = key => lookupArray.find(_ => typeof _?.[key] !== typeof undefined);
 
   function get(target, key) {
     const source = findSourceOf(key) || target;
